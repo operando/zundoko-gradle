@@ -1,0 +1,27 @@
+defaultTasks 'zundoko'
+
+task kiyoshi << {
+    println 'キ・ヨ・シ！'
+}
+
+task zundoko << {
+    description 'zundoko kiyoshi task.'
+    int zun = 0
+    while (true) {
+        int random = (int) (Math.random() * 2)
+        print random == 0 ? 'ズン' : 'ドコ'
+        print ' '
+        switch (random) {
+            case 0:
+                zun++
+                break
+            case 1:
+                if (zun > 4) {
+                    tasks.kiyoshi.execute()
+                    return
+                }
+                zun = 0
+        }
+    }
+}
+
